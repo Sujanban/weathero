@@ -1,26 +1,23 @@
 import './App.css';
-import { Favcity } from './components/Favcity';
-import { Userinput } from './components/Userinput';
-import { TodayOverview } from './components/TodayOverview';
 import { Navigation } from './components/Navigation';
-import { TemperatureHistory } from './components/TemperatureHistory';
-import { WeatherDetails } from './components/WeatherDetails';
-import "./api/Weather.js";
+import { Dashboard } from './pages/Dashboard';
+import { Counter } from './pages/Counter';
+import { Contact } from './pages/Contact';
+import { Favourate } from './pages/Favourate';
+import { Route, Routes } from 'react-router-dom';
+import { Weather } from './pages/Weather';
 
 function App() {
   return (
     <div className="App flex w-full">
-      <div className='w-1/5'>
-        <Navigation />
-      </div>
-      <div className='w-3/5 p-4'>
-        <Userinput />
-        <TodayOverview />
-        <TemperatureHistory />
-      </div>
-      <div className='w-1/5'>
-        <WeatherDetails />
-      </div>
+      <Navigation />
+      <Routes>
+        <Route path='/' element={<Dashboard />} exact />
+        <Route path='/favourate' element={<Favourate name='sujan' />} exact />
+        <Route path='/counter' element={<Counter />} exact />
+        <Route path='/contact' element={<Contact />} exact />
+        <Route path='/weather' element={<Weather/>} exact/>
+      </Routes>
     </div>
   );
 }
